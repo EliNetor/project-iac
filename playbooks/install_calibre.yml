@@ -2,3 +2,24 @@
   ansible.builtin.package:
     name: "*"
     state: latest
+- name: install dependancys for calibre
+  ansible.builtin.package:
+    name:
+      - python
+      - xdg-utils
+      - xz
+      - lzma
+      - mesa-libGL
+      - freeglut
+      - freeglut-devel
+      - epel-release
+      - xcb-util-cursor
+      - curl
+    state: present
+- name: Download calibre installer script
+  ansible.builtin.uri:
+    url: https://download.calibre-ebook.com/linux-installer.sh
+    dest: /tmp/linux-installer.sh
+    return_content: yes
+- name: Run calibre installer script
+  command: sh /tmp/linux-installer.sh
