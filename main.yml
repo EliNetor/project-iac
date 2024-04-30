@@ -1,0 +1,5 @@
+- hosts: rocky
+  become: yes
+  tasks:
+    - name: Install_calibre.yml
+      import_tasks: ./playbooks/install_calibre.yml
