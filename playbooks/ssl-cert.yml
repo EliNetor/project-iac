@@ -1,0 +1,42 @@
+- name: Create directory for private keys
+  file:
+    path: "{{ content_server_ssl_key_dir }}"
+    state: directory
+
+- name: Create directory for certificates
+  file:
+    path: "{{ content_server_ssl_cert_dir }}"
+    state: directory
+
+- name: Install cryptography library
+  package:
+    name: python3-cryptography
+    state: present
+ 
+- name: Generate a private key
+  community.crypto.openssl_privatekey:
+    path: "{{ content_server_ssl_key_dir }}/content_server.key"
+    state: present
+    force: yes
+
+- name: Create a CSR (Certificate Signing Request)
+  community.crypto.openssl_csr:
+    path: "{{ content_server_ssl_cert_dir }}/content_server.csr"
+    state: present
+    subject: "{{ content_server_subject }}"
+    privatekey_path: "{{ content_server_ssl_key_dir }}/content_server.key"
+
+
+- name: Generate the self-signed certificate
+  community.crypto.x509_certificate:
+    path: "{{ content_server_ssl_cert_dir }}/content_server.crt"
+    state: present
+    subject: "{{ content_server_subject }}"
+    provider: selfsigned
+    csr_path: "{{ content_server_ssl_cert_dir }}/content_server.csr"
+    privatekey_path: "{{ content_server_ssl_key_dir }}/content_server.key"
+
+- name: Delete temporary CSR (optional)
+  file:
+    path: "{{ content_server_ssl_cert_dir }}/content_server.csr"
+    state: absent

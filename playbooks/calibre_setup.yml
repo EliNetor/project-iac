@@ -9,5 +9,5 @@
   ansible.builtin.copy:
     src: "../Calibre_Library"
     dest: "/home/{{user}}"
-- name: run calibre
-  command: calibre-server /home/{{user}}/Calibre_Library
+#- name: run calibre
+#  command: calibre-server /home/{{user}}/Calibre_Library
