@@ -1,0 +1,13 @@
+- name: Open port 8080
+  ansible.posix.firewalld:
+    port: "8080/tcp"
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: Copy files to remote hosts
+  ansible.builtin.copy:
+    src: "../Calibre_Library"
+    dest: "/home/{{user}}"
+- name: run calibre
+  command: calibre-server /home/{{user}}/Calibre_Library
