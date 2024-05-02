@@ -1,0 +1,26 @@
+- name: Install Nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+- name: Open port 80
+  ansible.posix.firewalld:
+    port: "80/tcp"
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: Put SELinux in permissive mode
+  ansible.posix.selinux:
+    policy: targeted
+    state: permissive
+
+- name: Copy custom Nginx config file
+  copy:
+    src: ../calibre-proxy.conf
+    dest: /etc/nginx/conf.d/calibre-proxy.conf
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted

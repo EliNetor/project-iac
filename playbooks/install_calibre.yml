@@ -16,22 +16,15 @@
       - xcb-util-cursor
       - curl
     state: present
-- name: Check if Calibre is installed
-  ansible.builtin.command:
-    cmd: calibre --version
-    warn: no
-  register: calibre_check
-  failed_when: calibre_check.rc != 0 and 'not found' not in calibre_check.stderr
-  changed_when: false
+
 - name: Download calibre installer script
   ansible.builtin.uri:
     url: https://download.calibre-ebook.com/linux-installer.sh
     dest: /tmp/linux-installer.sh
     return_content: yes
-  when: calibre_check.rc != 0
+
 - name: Run calibre installer script
   command: sh /tmp/linux-installer.sh
   args:
     creates: /usr/bin/calibre
-  when: calibre_check.rc != 0
-
+ 

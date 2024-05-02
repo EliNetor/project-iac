@@ -1,0 +1,4 @@
+# Path to the SSL certificate file
+ssl_certfile
+# Path to the SSL private key file
+ssl_keyfile
