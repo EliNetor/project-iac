@@ -10,6 +10,13 @@
     immediate: yes
     state: enabled
 
+- name: Open port 443
+  ansible.posix.firewalld:
+    port: "443/tcp"
+    permanent: yes
+    immediate: yes
+    state: enabled
+
 - name: Put SELinux in permissive mode
   ansible.posix.selinux:
     policy: targeted
