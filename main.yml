@@ -7,12 +7,10 @@
       import_tasks: ./playbooks/install_calibre.yml
     - name: calibre_setup.yml
       import_tasks: ./playbooks/calibre_setup.yml
-    - name: ssl-cert.yml
-      import_tasks: ./playbooks/ssl-cert.yml
-    - name: https_enable.yml
-      import_tasks: ./playbooks/https_enable.yml
     - name: nginx.yml
       import_tasks: ./playbooks/nginx.yml
+    - name: ssl-cert.yml
+      import_tasks: ./playbooks/ssl-cert.yml
     - name: run calibre
       command: calibre-server /home/{{user}}/Calibre_Library 
 

@@ -27,7 +27,3 @@
     src: ../calibre-proxy.conf
     dest: /etc/nginx/conf.d/calibre-proxy.conf
 
-- name: Restart Nginx
-  service:
-    name: nginx
-    state: restarted

@@ -1,8 +1,9 @@
-- name: update packages
+- name: Update packages
   ansible.builtin.package:
     name: "*"
     state: latest
-- name: install dependencies for calibre
+
+- name: Install dependencies for calibre
   ansible.builtin.package:
     name:
       - python
@@ -13,8 +14,13 @@
       - freeglut
       - freeglut-devel
       - epel-release
-      - xcb-util-cursor
       - curl
+    state: present
+
+- name: Install xcb-util-cursor
+  ansible.builtin.package:
+    name:
+      - xcb-util-cursor
     state: present
 
 - name: Download calibre installer script
@@ -27,4 +33,3 @@
   command: sh /tmp/linux-installer.sh
   args:
     creates: /usr/bin/calibre
- 

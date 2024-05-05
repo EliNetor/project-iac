@@ -26,4 +26,8 @@
     csr_path: "/etc/nginx/conf.d/content_server.csr"
     privatekey_path: "/etc/nginx/conf.d/content_server.key"
 
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
 
