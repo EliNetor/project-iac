@@ -1,6 +1,4 @@
 user: eli
-content_server_ssl_key_dir: /etc/ssl/private
-content_server_ssl_cert_dir: /etc/ssl/certs
 content_server_subject:
   C: BE
   ST: Antwerp
