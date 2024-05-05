@@ -1,4 +1,10 @@
 - name: Copy files to remote hosts
   ansible.builtin.copy:
     src: "../Calibre_Library"
-    dest: "/home/{{user}}"
+    dest: "/home/{{ user }}"
+    force: no
+
+- name: Add user file
+  ansible.builtin.copy:
+    src: "../users.sqlite"
+    dest: "/home/{{ user }}/users.sqlite"
