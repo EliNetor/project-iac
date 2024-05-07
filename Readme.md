@@ -41,6 +41,6 @@ Er wordt vanuit gegaan dat de ansible instellingen host file correct geconfigure
 ## Referenties
 
 Tijdens het opstellen van de playbook heb ik soms gebruikt gemaakt van volgende AI tools:
-ChatGPT: https://chatgpt.com
-Gemini: https://gemini.google.com/
-Copilot: https://copilot.microsoft.com/
+- ChatGPT: https://chatgpt.com
+- Gemini: https://gemini.google.com/
+- Copilot: https://copilot.microsoft.com/
