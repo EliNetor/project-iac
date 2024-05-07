@@ -37,3 +37,10 @@ Om het playbook te launchen gebruik volgend commando:
 sudo ansible-playbook main.yml
 ```
 Er wordt vanuit gegaan dat de ansible instellingen host file correct geconfigureerd zijn en er verbinding kan gemaakt worden met de hosts. Dit playbook werkt enkel op linux machines.
+
+## Referenties
+
+Tijdens het opstellen van de playbook heb ik soms gebruikt gemaakt van volgende AI tools:
+ChatGPT: https://chatgpt.com
+Gemini: https://gemini.google.com/
+Copilot: https://copilot.microsoft.com/
